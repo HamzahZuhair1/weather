@@ -1,3 +1,10 @@
 spring:
   application:
-    name: weather
+    name: weather-integration-service
+
+weather:
+  api:
+    open-meteo:
+      base-url: https://api.open-meteo.com/v1/forecast
+      connect-timeout: 5000
+      read-timeout: 5000
