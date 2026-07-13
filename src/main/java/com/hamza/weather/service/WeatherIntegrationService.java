@@ -3,6 +3,7 @@ package com.hamza.weather.service;
 import com.hamza.weather.dto.openmeteo.OpenMeteoResponse;
 import com.hamza.weather.exception.ExternalApiException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -13,6 +14,7 @@ public class WeatherIntegrationService {
 
     private final RestClient weatherRestClient;
 
+    @Cacheable(value = "weatherCache", key = "#latitude + '-' + #longitude")
     public OpenMeteoResponse fetchWeather(double latitude, double longitude) {
         return weatherRestClient.get()
                 .uri(uriBuilder -> uriBuilder
