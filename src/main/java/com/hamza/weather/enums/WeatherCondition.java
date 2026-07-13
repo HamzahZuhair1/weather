@@ -16,14 +16,14 @@ public enum WeatherCondition {
 
     private final String description;
 
-    public static String fromCode(int code) {
+    public static WeatherCondition fromCode(int code) {
         return switch (code) {
-            case 0 -> CLEAR_SKY.getDescription();
-            case 1, 2, 3 -> PARTLY_CLOUDY.getDescription();
-            case 45, 48 -> FOG.getDescription();
-            case 51, 53, 55, 61, 63, 65 -> RAIN.getDescription();
-            case 71, 73, 75 -> SNOW.getDescription();
-            default -> UNKNOWN.getDescription();
+            case 0 -> CLEAR_SKY;
+            case 1, 2, 3 -> PARTLY_CLOUDY;
+            case 45, 48 -> FOG;
+            case 51, 53, 55, 61, 63, 65 -> RAIN;
+            case 71, 73, 75 -> SNOW;
+            default -> UNKNOWN;
         };
     }
 }
